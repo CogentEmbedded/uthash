@@ -74,6 +74,8 @@ typedef unsigned char uint8_t;
 #endif
 #elif defined(__GNUC__) && !defined(__VXWORKS__)
 #include <stdint.h>
+#elif defined(__TI_COMPILER_VERSION__)
+#include <stdint.h>
 #else
 typedef unsigned int uint32_t;
 typedef unsigned char uint8_t;
@@ -703,7 +705,8 @@ do {                                                                            
 /* The Paul Hsieh hash function */
 #undef get16bits
 #if (defined(__GNUC__) && defined(__i386__)) || defined(__WATCOMC__)             \
-  || defined(_MSC_VER) || defined (__BORLANDC__) || defined (__TURBOC__)
+  || defined(_MSC_VER) || defined (__BORLANDC__) || defined (__TURBOC__)         \
+  || defined(__TI_COMPILER_VERSION__)
 #define get16bits(d) (*((const uint16_t *) (d)))
 #endif
 
